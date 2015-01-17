@@ -19,6 +19,7 @@ h1 {
 }
 
 .responsive-fake-table {
+  
   margin-bottom: 20px;
   .col {
     border: 1px solid transparent;
@@ -42,6 +43,7 @@ h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
   }
   section:nth-child(odd) .col {
     background-color: #fff;
@@ -52,4 +54,14 @@ h1 {
   section .col.toggle {
     cursor: pointer;
   }
+}
+.container-detail-book{
+  margin-top:5px;
+  margin-bottom:5px;
+}
+.panel-footer.panel-transparent{
+background-color:transparent;
+}
+.center-content{
+  text-align:center;
 }

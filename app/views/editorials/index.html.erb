@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1>Lita de Editoriales</h1>    
+  </div>
+  <div class="panel-footer panel-transparent">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%=t('activerecord.attributes.editorial.name')%></th>
+          <th><%=t('activerecord.attributes.editorial.description')%></th>
+          <th><%=t('activerecord.attributes.editorial.country')%></th>
+          <th class="center-content"><span class="hidden-sm hidden-xs">Opciones</span>&nbsp;</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @editorials.each do |editorial| %>
+          <tr>
+            <td><%= editorial.name %></td>
+            <td><%= editorial.description %></td>
+            <td><%= editorial.country %></td>
+            <td class="center-content">
+              <%= link_to content_tag('i','', class: 'fa fa-eye'), editorial, class: 'tooltipable', title: 'Ver' %>
+              <%= link_to content_tag('i','', class: 'fa fa-pencil-square-o'), edit_editorial_path(editorial), class: 'tooltipable', title: 'Editar' %>
+              <%= link_to content_tag('i','', class: 'fa fa-times'), editorial, method: :delete, data: { confirm: 'Seguro que desea eliminar?' }, class: 'tooltipable', title: 'Eliminar' %>              
+            </td>
+
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= link_to 'Agregar Editorial', new_editorial_path, class: 'btn btn-primary' %>
+

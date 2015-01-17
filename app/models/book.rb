@@ -18,9 +18,27 @@
 #
 
 class Book < ActiveRecord::Base
+  #relations	
+  belongs_to :editorial
+  has_and_belongs_to_many :authors
   
-  validates :title, :author, :editorial, :presence => true
+  #validates :title, :author, :editorial, :presence => true
+  validates :title, :presence => true
   validates :edition, :publication_year, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
-  
-  
+  validates :picture,
+    attachment_content_type: { content_type: /\Aimage\/.*\Z/ },
+    attachment_size: { less_than: 5.megabytes }
+
+  has_attached_file :picture, styles: {
+    thumb: '100x100>',
+    medium: '300x300>'
+  }
+
+  def self.search(search)
+    if search
+      where('title LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
 end

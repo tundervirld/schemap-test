@@ -1,0 +1,34 @@
+<%= form_for(@editorial) do |f| %>
+<div class="row">
+    <div class="col-xs-6">
+      <% if @editorial.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@editorial.errors.count, "error") %> prohibited this editorial from being saved:</h2>
+
+          <ul>
+          <% @editorial.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name , :class => "form-control", :placeholder => "Nombre del Autor"  %>
+      </div>
+      <div class="form-group  field">
+        <%= f.label :description %><br>
+        <%= f.text_field :description , :class => "form-control", :placeholder => "Nombre del Autor"  %>
+      </div>
+      <div class="form-group  field">
+        <%= f.label :country %><br>
+        <%= f.text_field :country , :class => "form-control", :placeholder => "Nombre del Autor"  %>
+      </div>
+      <div class="actions">
+        <%= f.submit :class=>"btn btn-primary"%>
+      </div>
+
+  </div>
+</div>
+<% end %>

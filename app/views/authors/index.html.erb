@@ -1,0 +1,35 @@
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1>Lista de Autores</h1>
+  </div>
+  <div class="panel-footer panel-transparent">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%=t('activerecord.attributes.author.name')%></th>
+          <th><%=t('activerecord.attributes.author.date_of_birth')%></th>
+          <th><%=t('activerecord.attributes.author.number_of_books')%></th>
+          <th class="center-content"><span class="hidden-sm hidden-xs">Opciones</span>&nbsp;</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @authors.each do |author| %>
+          <tr>
+            <td><%= author.name %></td>
+            <td><%= author.date_of_birth %></td>
+            <td><%= author.number_of_books %></td>
+            <td class="center-content">
+              <%= link_to content_tag('i','', class: 'fa fa-eye'), author, class: 'tooltipable', title: 'Ver' %>
+              <%= link_to content_tag('i','', class: 'fa fa-pencil-square-o'), edit_author_path(author), class: 'tooltipable', title: 'Editar' %>
+              <%= link_to content_tag('i','', class: 'fa fa-times'), author, method: :delete, data: { confirm: 'Seguro que desea eliminar?' }, class: 'tooltipable', title: 'Eliminar' %>              
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<%= link_to 'Agregar Autor', new_author_path, class: 'btn btn-primary' %>

@@ -1,0 +1,7 @@
+
+rail generate migration AddPictureColumnToBook
+rails g migration books
+rails generate scaffold editorial name:string description:string country:string
+rails generate scaffold author name:string date_of_birth:date number_of_books:integer
+
+rails g migration create_authors_books

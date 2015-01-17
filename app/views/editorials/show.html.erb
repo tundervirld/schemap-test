@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-body">
+	<h1>Editorial</h1>    
+  </div>
+  <div class="panel-footer panel-transparent">
+  	<div class="row">
+	    <div class="col-xs-6"> 
+	      	<dl class="dl-horizontal">
+	      		<dt><%=t('activerecord.attributes.editorial.name')%></dt>
+	        	<dd><%=@editorial.name || '-' %></dd>
+	        	<dt><%=t('activerecord.attributes.editorial.description')%></dt>
+	        	<dd><%=@editorial.description || '-' %></dd>
+	        	<dt><%=t('activerecord.attributes.editorial.country')%></dt>
+	        	<dd><%=@editorial.country || '-' %></dd>
+	    	</dl>
+		</div>
+	</div>		
+
+  </div>
+</div>
+<div class="row">
+	<div class="col-sm-12">      
+	  <%= link_to 'Editar', edit_editorial_path(@editorial), class: 'btn btn-primary' %>
+	  <%= link_to 'Volver', editorials_path, class: 'btn btn-default' %>
+	</div>
+</div>

@@ -11,12 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115194515) do
+ActiveRecord::Schema.define(version: 20150117132639) do
+
+  create_table "authors", force: true do |t|
+    t.string   "name"
+    t.date     "date_of_birth"
+    t.integer  "number_of_books"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "authors_books", id: false, force: true do |t|
+    t.integer "book_id"
+    t.integer "author_id"
+  end
+
+  add_index "authors_books", ["author_id"], name: "index_authors_books_on_author_id", using: :btree
+  add_index "authors_books", ["book_id"], name: "index_authors_books_on_book_id", using: :btree
 
   create_table "books", force: true do |t|
-    t.string   "title",            null: false
-    t.string   "author",           null: false
-    t.string   "editorial",        null: false
+    t.string   "title",                null: false
+    t.integer  "editorial_id",         null: false
     t.string   "original_title"
     t.string   "translation"
     t.integer  "edition"
@@ -24,6 +39,18 @@ ActiveRecord::Schema.define(version: 20141115194515) do
     t.string   "edition_place"
     t.integer  "publication_year"
     t.string   "isbn"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  create_table "editorials", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,6 +69,6 @@ ActiveRecord::Schema.define(version: 20141115194515) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

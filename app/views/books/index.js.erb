@@ -1,0 +1,8 @@
+$("#books").html("<%= escape_javascript(render("books")) %>");
+ $('#books div.table-sortable div.sortable a, #books .pagination a').on({
+    'click':function(){
+      console.log("lalala")
+      $.getScript(this.href);
+      return false;
+    }
+  }); 

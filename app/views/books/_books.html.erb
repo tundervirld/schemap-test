@@ -1,9 +1,9 @@
  	<div class="responsive-fake-table expansible-fake-table table-sortable">
       <header class="row">
         <div class="col col-xs-5 col-sm-4 col-md-3 sortable"><%=sortable "title"%></div>
-        <div class="col col-xs-5 col-sm-3 col-md-3 sortable"><%=sortable "authors"%></div>
-        <div class="col hidden-xs col-sm-4 col-md-3 sortable"><%=sortable "editorials"%></div>
-        <div class="col hidden-xs hidden-sm col-md-2 sortable"><%=sortable "edition"%></div>
+        <div class="col col-xs-5 col-sm-3 col-md-3 sortable"><%=t('activerecord.attributes.book.author')%></div>
+        <div class="col hidden-xs col-sm-4 col-md-3 "><%=t('activerecord.attributes.book.editorial')%></div>
+        <div class="col hidden-xs hidden-sm col-md-2 "><%=sortable "edition"%></div>
         <div class="col col-xs-2 col-sm-1 col-md-1 center-content"><span class="hidden-sm hidden-xs">Opciones</span>&nbsp;</div>
       </header>
       <% @books.each do |book|%>

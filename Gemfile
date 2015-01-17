@@ -65,3 +65,5 @@ end
 # gem 'debugger', group: [:development, :test]
 gem "paperclip"
 gem 'mysql2'
+gem 'will_paginate', '~> 3.0.5'
+gem 'will_paginate-bootstrap'

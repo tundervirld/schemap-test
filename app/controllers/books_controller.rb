@@ -1,10 +1,17 @@
 class BooksController < ApplicationController
+  helper_method :sort_column, :sort_direction
   respond_to :html
+  
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Book.order(title: :asc )
-    respond_with(@books)
+    #@books = Book.order(title: :asc )
+    @books = Book.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    #respond_with(@books)
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
 
   def show
@@ -54,5 +61,12 @@ class BooksController < ApplicationController
                                    :isbn,
                                    :picture,
                                    :author_ids =>[])
+    end
+    def sort_column
+      Book.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

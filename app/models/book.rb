@@ -33,4 +33,12 @@ class Book < ActiveRecord::Base
     thumb: '100x100>',
     medium: '300x300>'
   }
+
+  def self.search(search)
+    if search
+      where('title LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
 end

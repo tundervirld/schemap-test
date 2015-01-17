@@ -1,6 +1,8 @@
-<h1>Editing editorial</h1>
+<h1>Editar Editorial</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @editorial %> |
-<%= link_to 'Back', editorials_path %>
+<div class="pull-right">
+	<%= link_to 'Ver' , @editorial, :class=>"btn btn-default btn-sm", :role =>"button" %> 
+	<%= link_to 'Volver', editorials_path, :class=>"btn btn-default btn-sm", :role =>"button"  %>
+</div>

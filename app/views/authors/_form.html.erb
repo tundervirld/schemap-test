@@ -1,0 +1,44 @@
+<%= form_for(@author) do |f| %>
+<div class="row">
+    <div class="col-xs-6">
+      <% if @author.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@author.errors.count, "error") %> prohibited this author from being saved:</h2>
+
+          <ul>
+          <% @author.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, :class => "form-control", :placeholder => "Nombre del Autor" %>
+      </div>
+      <div class="form-inline">
+        <div class="form-group field">
+          <%= f.label :date_of_birth %><br>
+          <%= f.date_select :date_of_birth, 
+                            :start_year: 1930,
+                            { :order => [:day, :month, :year], 
+                            :prompt => { :day => 'Día', :month => 'Mes', :year=>"Año" } },
+                            {:class => "form-control"} %>
+
+          
+        </div>
+      </div>
+
+      <div class="form-group field">
+        <%= f.label :number_of_books %><br>
+        <%= f.number_field :number_of_books,  :class => "form-control", :placeholder => "Número de libros" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit :class=>"btn btn-primary"  %>
+      </div>
+
+    </div> <!-- End row col-xs-6 --> 
+</div>  <!-- End row form --> 
+<% end %>

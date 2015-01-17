@@ -22,7 +22,14 @@
         
       <div class="form-group field">
         <%= f.label :author %><br>
-        <%= f.text_field :author,  :class => "form-control", :placeholder => "Ingrese el Autor"%>
+        
+        
+        <%= collection_select :book, :author_ids, 
+                              Author.all, 
+                              :id, :name, 
+                              { :selected => @book.author_ids }, 
+                              { :multiple => true, :name => 'book[author_ids][]', :class => "form-control"} %>
+
       </div>
       </br>
       <div class="form-inline">
@@ -36,8 +43,7 @@
                                 :name, 
                                 {},
                                 {:class=>"form-control select-editorial"}
-                              )
-          %>
+                              )%>
                                   
                                   
         </div>
@@ -61,10 +67,16 @@
         <%= f.label :edition %><br>
         <%= f.number_field :edition,  :class => "form-control", :placeholder => "Número de Edición" %>
       </div>
-      <div class="form-group field">
-        <%= f.label :edition_date %><br>
-        <%= f.date_select :edition_date,  :class => "form-control"%>
-      </div>
+      <div class="form-inline">
+        <div class="form-group field">
+          <%= f.label :edition_date %><br>
+          
+          <%= f.date_select :edition_date, 
+                              { :order => [:day, :month, :year], 
+                              :prompt => { :day => 'Día', :month => 'Mes', :year=>"Año" } },
+                              {:class => "form-control"} %>
+        </div>
+      </div>  
       <div class="form-group field">
         <%= f.label :edition_place %><br>
         <%= f.text_field :edition_place, :class => "form-control", :placeholder => "Lugar de Edición" %>

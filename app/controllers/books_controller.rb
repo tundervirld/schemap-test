@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Book.order("created_at").last(10)
+    @books = Book.order(title: :asc )
     respond_with(@books)
   end
 
@@ -26,6 +26,7 @@ class BooksController < ApplicationController
   end
 
   def update
+#    raise book_params.to_yaml
     @book.update(book_params)
     respond_with(@book)
   end
@@ -42,7 +43,7 @@ class BooksController < ApplicationController
 
     def book_params
       params.require(:book).permit(:title, 
-                                   :author, 
+                                   #:author,                    
                                    :editorial_id, 
                                    :original_title, 
                                    :translation, 
@@ -51,6 +52,7 @@ class BooksController < ApplicationController
                                    :edition_place, 
                                    :publication_year, 
                                    :isbn,
-                                   :picture)
+                                   :picture,
+                                   :author_ids =>[])
     end
 end

@@ -17,10 +17,12 @@
       <% @books.each do |book|%>
         <section class="row">
           <div class="col col-xs-5 col-sm-4 col-md-3 toggle"><%=book.title %></div>
-          <div class="col col-xs-5 col-sm-3 col-md-3 toggle"><%=book.author%></div>
+          <div class="col col-xs-5 col-sm-3 col-md-3 toggle">
+            <%=(book.authors.count > 0) ? book.authors.map {|x| x.name}.join(",") : "-"%>
+          </div>
           <div class="col hidden-xs col-sm-4 col-md-3 toggle"><%=book.editorial.name%></div>
           <div class="col hidden-xs hidden-sm col-md-2 toggle"><%=book.edition%></div>
-          <div class="col col-xs-2 col-sm-1 col-md-1">
+          <div class="col col-xs-2 col-sm-1 col-md-1 center-content">
             <%= link_to content_tag('i','', class: 'fa fa-eye'), book, class: 'tooltipable', title: 'Ver' %>
             <%= link_to content_tag('i','', class: 'fa fa-pencil-square-o'), edit_book_path(book), class: 'tooltipable', title: 'Editar' %>
             <%= link_to content_tag('i','', class: 'fa fa-times'), book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'tooltipable', title: 'Eliminar' %>
@@ -28,7 +30,7 @@
           </div>
           
           <!-- <div class="col col-xs-4"></div> -->
-          <div class="col col-xs-4 col-md-offset-4 panel-collapse collapse container-detail-book">
+          <div class="col  col-md-offset-4 col-xs-12 col-md-4 panel-collapse collapse container-detail-book">
               
             <dl class="dl-horizontal">
               

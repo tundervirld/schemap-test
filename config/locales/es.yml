@@ -20,6 +20,15 @@ es:
         edition_place: Lugar de edición
         publication_year: Año de publicación
         isbn: ISBN
+      author:
+        name: Nombre
+        date_of_birth: Fecha de cumpleaños 
+        number_of_books: Número de Libros
+      editorial:
+        name: Nombre
+        description: Descrición 
+        country: País
+        
   
   date:
     abbr_day_names:

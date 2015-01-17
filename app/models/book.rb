@@ -18,9 +18,12 @@
 #
 
 class Book < ActiveRecord::Base
+  #relations	
   belongs_to :editorial
+  has_and_belongs_to_many :authors
+  
   #validates :title, :author, :editorial, :presence => true
-  #validates :title, :author, :editorial_id, :presence => true
+  validates :title, :presence => true
   validates :edition, :publication_year, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validates :picture,
     attachment_content_type: { content_type: /\Aimage\/.*\Z/ },

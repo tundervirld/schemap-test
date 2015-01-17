@@ -1,0 +1,11 @@
+
+rail generate migration AddPictureColumnToBook
+rails g migration books
+rails generate scaffold editorial name:string description:string country:string
+
+
+
+
+
+rails generate model Editorial name:string description:string country:string
+rails g migration addEditorialIdToBooks editorial_id:integer

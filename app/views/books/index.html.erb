@@ -1,4 +1,5 @@
 <% content_for :title, "Lista de libros" %>
+<div class="clearfix">...</div>
 <div id="books_index">
   <h1><%= yield :title %></h1>
 
@@ -17,7 +18,7 @@
         <section class="row">
           <div class="col col-xs-5 col-sm-4 col-md-3 toggle"><%=book.title %></div>
           <div class="col col-xs-5 col-sm-3 col-md-3 toggle"><%=book.author%></div>
-          <div class="col hidden-xs col-sm-4 col-md-3 toggle"><%=book.editorial%></div>
+          <div class="col hidden-xs col-sm-4 col-md-3 toggle"><%=book.editorial.name%></div>
           <div class="col hidden-xs hidden-sm col-md-2 toggle"><%=book.edition%></div>
           <div class="col col-xs-2 col-sm-1 col-md-1">
             <%= link_to content_tag('i','', class: 'fa fa-eye'), book, class: 'tooltipable', title: 'Ver' %>
@@ -25,11 +26,14 @@
             <%= link_to content_tag('i','', class: 'fa fa-times'), book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'tooltipable', title: 'Eliminar' %>
         
           </div>
-          <div class="col col-xs-12 panel-collapse collapse">
+          
+          <!-- <div class="col col-xs-4"></div> -->
+          <div class="col col-xs-4 col-md-offset-4 panel-collapse collapse container-detail-book">
+              
             <dl class="dl-horizontal">
               
               <dt class="visible-xs"><%=t('activerecord.attributes.book.editorial') %></dt>
-              <dd class="visible-xs"><%=book.editorial || '-' %></dd>
+              <dd class="visible-xs"><%=book.editorial.name || '-' %></dd>
               
               <dt><%=t('activerecord.attributes.book.original_title') %></dt>
               <dd><%=book.original_title || '-' %></dd>
@@ -43,12 +47,15 @@
               <dt><%=t('activerecord.attributes.book.publication_year') %></dt>
               <dd><%=book.publication_year || '-' %></dd>
               
-              <dt></dt>
-              <dd>
-              </dd>
+              <dt>Portada</dt>
+              <dd><%= image_tag book.picture.url(:thumb) %></dd>
             </dl>
+              
             <%= link_to 'Ver más', book, class: 'btn btn-default btn-xs more-book-btn' %>                
+            
           </div>
+          <!-- <div class="col col-xs-4"></div> -->
+
         </section>
       <% end %>
     </div>
